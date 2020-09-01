@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>aea</title>
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">   
 </head>
 <body>
 <!--  <h1>3ed</h1> -->

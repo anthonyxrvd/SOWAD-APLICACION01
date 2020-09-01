@@ -19,5 +19,6 @@ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <value>.jsp</value>
    </property>
  </bean>
+ <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
 </beans>	
 	
