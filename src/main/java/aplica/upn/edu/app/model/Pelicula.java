@@ -65,10 +65,10 @@ public class Pelicula {
 	private String Clasificacion;
 	private String imagen="cinema.png";
 	private Date fechaEstreno;
-	private String estatus="Active";
-	
-	
-	
-	
-	
+	private String estatus;
+
+
+
+
+
 }
