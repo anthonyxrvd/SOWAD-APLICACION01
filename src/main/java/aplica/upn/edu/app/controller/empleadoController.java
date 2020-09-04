@@ -10,47 +10,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import aplica.upn.edu.app.model.Pelicula;
-
+import aplica.upn.edu.app.model.Empleado;
 @Controller
-public class HomeController {
-	@RequestMapping(value="/home",method=RequestMethod.GET)
+public class empleadoController {
+	@RequestMapping(value="/empleados",method=RequestMethod.GET)
 	public ModelAndView irHome() {
 
 		ModelAndView MV= new ModelAndView();
 
-		MV.setViewName("home");
+		MV.setViewName("empleados");
 		return MV;         //Retorna el nombre del archivo jsp de la vista 
 		//Por lo tanto debemos crear un archivo llamado home.jsp
 	}
 
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String mostrarPrincipal(Model model) {
-		List<Pelicula> peliculas=getLista();
+		List<Empleado> empleados=getLista();
 		//peliculas.add("A");
 		//peliculas.add("B");
 		//peliculas.add("C");
 
-		model.addAttribute("Vpeliculas",peliculas);
-		return "home";
+		model.addAttribute("Vempleados",empleados);
+		return "empleados";
 	}
 
-	private List<Pelicula>getLista(){
+	private List<Empleado>getLista(){
 		SimpleDateFormat formatter =new SimpleDateFormat("dd-MM-yyyy");
-		List<Pelicula> lista =null;
+		List<Empleado> lista =null;
 		try {
 			lista = new LinkedList<>();
-			Pelicula p = new Pelicula();
-			p.setId(1); p.setTitulo("ABC"); p.setClasificacion("A");
-			p.setGenero("Horror"); p.setFechaEstreno(formatter.parse("02-05-2018"));
-			p.setImagen("logo.png"); p.setEstatus("Activo");p.setDuracion(180);
-
-			Pelicula p2 = new Pelicula();
-			p2.setId(2); p2.setTitulo("QWERY"); p2.setClasificacion("A");
-			p2.setGenero("Horror"); p2.setFechaEstreno(formatter.parse("02-05-2020"));
-			p2.setImagen("empleado.png"); p2.setEstatus("A");p2.setDuracion(180);
-			lista.add(p);
-			lista.add(p2);
+			Empleado e = new Empleado();
+			e.setId(1); e.setNombre("Anthony"); e.setApellido("Castañeda");
+			e.setCargo("programador"); e.setFechaInicio(formatter.parse("02-05-2018"));
+			e.setFechaFin(formatter.parse("02-05-2018"));
+			e.setEstado("Activo");e.setTelefono(123); 
+			e.setImagen("empleado.png");
 			return lista;
 		}
 		catch(Exception e){
