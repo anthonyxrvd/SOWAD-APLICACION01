@@ -7,17 +7,36 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-<context:component-scan base-package="aplica.upn.edu.app.controller"/>
-<mvc:annotation-driven></mvc:annotation-driven>
-<bean id="viewResolver"
-class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<mvc:annotation-driven/>
+	<context:annotation-config />
+	<context:component-scan base-package="aplica.upn.edu.app.controller" />
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
 
- <property name="prefix">
- <value>/WEB-INF/views/</value>
-  </property>
-   <property name="suffix">
-      <value>.jsp</value>
-   </property>
- </bean>
- <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/pruebassowad?serverTimezone=UTC" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="noticiaDao"
+		class="aplica.upn.edu.app.service.NoticiaImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 </beans>

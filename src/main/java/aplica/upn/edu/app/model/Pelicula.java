@@ -66,9 +66,4 @@ public class Pelicula {
 	private String imagen="cinema.png";
 	private Date fechaEstreno;
 	private String estatus;
-
-
-
-
-
 }
